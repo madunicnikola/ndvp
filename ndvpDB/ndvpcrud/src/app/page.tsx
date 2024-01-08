@@ -23,7 +23,7 @@ export default async function Blog() {
         <Link href={"/admin/vijesti"} className="md:w-36 sm:w-2/4 text-center rounded-md p-2 m-auto text-xl bg-buttonColor font-sans-montserrat uppercase text-secondaryColor">Dodaj Vijest</Link>
       </div>
       <div className="w-full flex flex-col justify-center items-center">
-        {posts?.map((post:any) => (
+        {posts && posts.map((post: any) => (
           <div className="w-3/4 p-4 rounded-md mx-3 my-2 bg-blogBgColor flex flex-col justify-center">
             <div className="flex items-center my-3">
               <div className="mr-auto">

@@ -7,7 +7,7 @@ type updateParams = {
     title: string;
     description: string;
     id: string;
-}
+};
 const updateVijest = async (data:updateParams) => {
     const res = fetch(`http://localhost:3000/api/vijesti/${data.id}`, {method:"PUT", body:JSON.stringify({title:data.title, description:data.description}),
     //@ts-ignore

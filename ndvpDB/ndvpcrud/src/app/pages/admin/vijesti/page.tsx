@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { Fragment, useRef } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
-const postaviVijest = async ({title, description}:{title:string, description:string}) => {
+const postaviVijest = async ({title, description}: {title: string, description: string}) => {
     const res = fetch("http://localhost:3000/api/vijesti", {method:"POST", body:JSON.stringify({title, description}),
     //@ts-ignore
     "Content-Type": "application/json",
