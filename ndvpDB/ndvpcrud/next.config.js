@@ -4,12 +4,11 @@ const nextConfig = {
         return [
             {
                 source: '/',
-                destination: '/pages',
+                destination: '/',
                 permanent: true,
-                basePath: false,
             }
         ]
     }
 }
 
-module.exports = nextConfig
+module.exports = nextConfig;
