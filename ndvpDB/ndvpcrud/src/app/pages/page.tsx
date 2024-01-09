@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useEffect } from "react";
+import React from 'react';
 
 async function pokupiVijesti(){
   const res = await fetch("http://localhost:3000/api/vijesti", {next: {

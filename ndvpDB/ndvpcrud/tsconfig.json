@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/admin/admin.tsx", "pages/components/VannilaRoot.jsx", "public/home.js", "src/app/page.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/admin/admin.tsx", "pages/components/VannilaRoot.jsx", "public/home.js", "src/app/pages/page.tsx"],
   "exclude": ["node_modules"]
 }
