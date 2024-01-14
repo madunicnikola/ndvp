@@ -1,9 +1,6 @@
 import React from 'react'
-
-function Admin() {
+export default function Home(){
   return (
-    <div>Admin</div>
+    
   )
 }
-
-export default Admin

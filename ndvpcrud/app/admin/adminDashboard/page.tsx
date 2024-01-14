@@ -20,7 +20,7 @@ export default async function Blog() {
       <h1 className="text-center text-5xl font-sans-montserrat uppercase text-secondaryColor"> Novosti </h1>
       </div>
       <div className="flex my-3">
-        <Link href={"/admin/vijesti"} className="md:w-36 sm:w-2/4 text-center rounded-md p-2 m-auto text-xl bg-buttonColor font-sans-montserrat uppercase text-secondaryColor">Dodaj Vijest</Link>
+        <Link href={"/admin/adminDashboard/vijesti"} className="md:w-36 sm:w-2/4 text-center rounded-md p-2 m-auto text-xl bg-buttonColor font-sans-montserrat uppercase text-secondaryColor">Dodaj Vijest</Link>
       </div>
       <div className="w-full flex flex-col justify-center items-center">
         {posts && posts.map((post: any) => (
@@ -29,7 +29,7 @@ export default async function Blog() {
               <div className="mr-auto">
                 <h2 className="mr-auto font-semibold font-sans-montserrat text-secondaryColor">{post.title}</h2>
               </div>
-              <Link href={`/admin/edit/${post.id}`} className="px-4 py-1 bg-buttonColor rounded-md font-sans-montserrat text-center text-xl text-secondaryColor uppercase hover: transition duration-300 ease-in-out">
+              <Link href={`/admin/adminDashboard/edit/${post.id}`} className="px-4 py-1 bg-buttonColor rounded-md font-sans-montserrat text-center text-xl text-secondaryColor uppercase hover: transition duration-300 ease-in-out">
                 Uredi
               </Link>
             </div>

@@ -2,8 +2,14 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+html,
+body,
+:root{
+    height: 100%;
+}
+
 @layer base {
     body {
-        @apply bg-mainBgColor;
+        @apply bg-backgroundColor;
     }
 }

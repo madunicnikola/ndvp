@@ -7,7 +7,7 @@ const config: Config = {
   ],
   theme: {
     colors:{
-      mainBgColor: '#0B0705',
+      backgroundColor: '#0B0705',
       secondaryColor: '#FAF3DD',
       buttonColor: '#694E4E',
       blogBgColor: '#2a1506',
@@ -15,6 +15,9 @@ const config: Config = {
       chocolate: '#301200',
       red: '#ff0000',
       darkRed: '#b20000',
+      indigo: '#645188',
+      darkIndigo: '#46385f',
+      warning: '#cc3300',
     },
     fontFamily: {
       'montserrat': ['Montserrat'],
