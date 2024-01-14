@@ -1,8 +1,10 @@
+import { Wrapper } from "../components/cardstyling";
+
 const mainLogin = () => {
   return (
-    <div>
+    <Wrapper headerLabel="Dobrodošli!" showSocial>
       Selam!
-    </div>
+    </Wrapper>
   )
 }
 

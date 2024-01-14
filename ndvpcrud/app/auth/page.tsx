@@ -14,7 +14,7 @@ export default function AdminAuthHome() {
             priority={true}
           />
         </div>
-        <div className="text-5xl font-semibold text-indigo drop-shadow-md font-sans-montserrat">
+        <div className="text-5xl font-semibold text-secondaryColor drop-shadow-md font-sans-montserrat">
             Authentication
         </div>
     </div>
