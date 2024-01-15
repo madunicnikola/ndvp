@@ -20,6 +20,11 @@ const config: Config = {
       indigo: '#645188',
       darkIndigo: '#46385f',
       warning: '#cc3300',
+      mocha: '#362727',
+      black: '#202020',
+      destructive: '#FF7F7F',
+      green: '#00d062',
+      lightblue: '#AAD9E6',
     },
     fontFamily: {
       'montserrat': ['Montserrat'],

@@ -13,17 +13,17 @@ export const Header = ({
         <div>
           <Image
             src="/images/scene2/scene2_2.png"
-            width={100}
-            height={100}
+            width={150}
+            height={150}
             alt="Vladimir Prelog"
             priority={true}
           />
         </div>
-        <div className="text-md font-semibold text-secondaryColor drop-shadow-md font-sans-montserrat">
+        <div className="text-lg mr-10 font-semibold text-secondaryColor drop-shadow-md font-sans-montserrat">
             Authentication
         </div>
     </div>
-    <p className="text-muted-foreground text-sm text-secondaryColor font-sans-montserrat uppercase">
+    <p className="text-muted-foreground text-lg font-bold text-secondaryColor font-sans-montserrat uppercase">
         {label}
     </p>
 </div>

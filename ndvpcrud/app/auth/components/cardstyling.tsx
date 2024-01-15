@@ -16,11 +16,11 @@ export const Wrapper = ({
     showSocial,
 }: CardWrapperComponents) => {
     return (
-        <Card className="w-[400px] shadow-md border-secondaryColor">
+        <Card className="w-[400px] shadow-md border-secondaryColor bg-mocha">
             <CardHeader>
                 <Header label={headerLabel}/>
             </CardHeader>
-            <CardContent className="text-indigo">
+            <CardContent className="text-secondaryColor text-lg">
                 {children}
             </CardContent>
             {showSocial && (
