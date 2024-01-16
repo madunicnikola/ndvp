@@ -56,3 +56,29 @@
       document.getElementById("scene" + (currentSceneIndex + 1) + "_" + (index + 1)).classList.add("visible");
     });
   }
+
+// ANIMACIJA KNJIGE
+$(document).ready(function () {
+  var winWidth = $(window).width();
+  var ratio = winWidth / 1920;
+  var bodyFontSize = Math.max(16 * ratio, 10);
+  var posX = Math.max(80 * ratio, 30);
+  $("body").css("font-size", bodyFontSize + "px");
+
+  var played = [0, 0, 0];
+
+  $(".front:not(.last)").click(function () {
+    var ix = $(this).parent(".paper").index();
+    $(".book").addClass("open");
+    $(this).parent(".paper").addClass("open");
+    if (!played[ix]) {
+      played[ix] = 1;
+    }
+  });
+
+  $(".back").click(function () {
+    if ($(this).parent(".paper").index() == 0)
+      $(".book").removeClass("open");
+    $(this).parent(".paper").removeClass("open");
+  });
+});

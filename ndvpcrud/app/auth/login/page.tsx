@@ -27,14 +27,17 @@ export const mainLogin = () => {
     setError("");
     setSuccess("");
     startTransition(() => {
-      login(values).then((data) => {
-        setError(data.error);
-        setSuccess(data.success);
-      })
+      login(values)
+        .then((data) => {
+          if (data) {
+          setError(data.error);
+          //@ts-ignore
+          setSuccess(data.success);
+      }})
     });
   }
 return (
-  <Wrapper headerLabel="Dobrodošli gospodo!" showSocial>
+  <Wrapper headerLabel="Dobrodošli gospodo!">
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}
       className="space-y-6">
@@ -64,7 +67,7 @@ return (
         </div>
         <ErrorStyling message={error}/>
         <SuccessStyling message={success}/>
-        <Button type="submit" disabled={isPending} className="w-full uppercase bg-darkIndigo hover:bg-indigo transition duration-300 ease-in-out">
+        <Button type="submit" disabled={isPending} className="w-[100px] mx-auto my-auto flex items-center justify-center uppercase bg-darkIndigo hover:bg-indigo transition duration-300 ease-in-out">
           Prijavi se
         </Button>
       </form>

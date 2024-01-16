@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -14,9 +15,6 @@ html,body{
     background-color: #0B0705;
     font-size: clamp(1.125rem, 2vw, 1.25rem);
 }
-body{
-    overflow: hidden;
-}
 body::-webkit-scrollbar{
     width: 0.25rem;
 }
@@ -29,7 +27,7 @@ body::-webkit-scrollbar-thumb{
     border-radius: 10px;
 }
 body{
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 /* PRELOADER */
@@ -260,8 +258,8 @@ header img{
 }
 svg#one {
 	position: absolute;
-	-webkit-transform: translate(20%, 7%);
-	transform: translate(35%, 7%);
+	-webkit-transform: translate(30%, 5%);
+	transform: translate(45%, 5%);
 }
 svg#two {
 	position: absolute;
@@ -295,6 +293,7 @@ path {
 	-webkit-animation: small 2.5s infinite;
 	-moz-animation: small 2.5s infinite;
 }
+
 @keyframes large {
 	0% {
 		opacity: 0;
@@ -306,7 +305,7 @@ path {
 	}
 	100% {
 		opacity: 0;
-		-webkit-transform: rotate(360deg) scale(1.5);
+		-webkit-transform: rotate(360deg) scale(1);
 		transform: rotate(360deg) scale(1.5);
 	}
 }
@@ -334,8 +333,8 @@ path {
 	}
 	100% {
 		opacity: 0;
-		-webkit-transform: rotate(405deg) scale(1.1);
-		transform: rotate(405deg) scale(1.1);
+		-webkit-transform: rotate(405deg) scale(1.2);
+		transform: rotate(405deg) scale(1.2);
 	}
 }
 @keyframes large-2 {
@@ -348,7 +347,7 @@ path {
 	}
 	100% {
 		opacity: 0;
-		transform: rotate(405deg) scale(1.1);
+		transform: rotate(405deg) scale(1.2);
 	}
 }
 @keyframes small {
@@ -363,7 +362,7 @@ path {
 	100% {
 		opacity: 0;
 		-webkit-transform: rotate(-360deg) scale(1);
-		transform: rotate(-360deg) scale(1.5);
+		transform: rotate(-360deg) scale(1);
 	}
 }
 @keyframes small {
@@ -376,7 +375,7 @@ path {
 	}
 	100% {
 		opacity: 0;
-		transform: rotate(-360deg) scale(1.5);
+		transform: rotate(-360deg) scale(1);
 	}
 }
 /* PARALLAX EFFECT */
@@ -527,14 +526,16 @@ path {
     overflow-x: hidden;
     width: 60%;
     margin: 20px auto;
-    display: inline-block;
-    vertical-align: middle;
   }
   .v-center {
     display: inline-block;
     vertical-align: middle;
     height: 100%;
     width: 0;
+  }
+  #container{
+    display: inline-block;
+    vertical-align: middle;
   }
   .book {
     transform-style: preserve-3d;

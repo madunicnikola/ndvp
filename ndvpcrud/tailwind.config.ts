@@ -20,7 +20,7 @@ const config: Config = {
       indigo: '#645188',
       darkIndigo: '#46385f',
       warning: '#cc3300',
-      mocha: '#362727',
+      mocha: '#3E3232',
       black: '#202020',
       destructive: '#FF7F7F',
       green: '#00d062',
