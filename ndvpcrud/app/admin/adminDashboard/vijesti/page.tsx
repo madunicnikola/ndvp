@@ -111,7 +111,7 @@ const DodajVijest = () => {
       <Toaster />
       <div className="container w-full m-auto flex my-4">
         <div className="editor flex flex-col justify-center m-auto">
-          <p className="text-2xl text-secondaryColor font-bold p-3 font-sans-montserrat uppercase text-center justify-center">Naše vijesti!✨</p>
+          <p className="text-2xl text-secondaryColor font-bold p-3 uppercase text-center justify-center">Naše vijesti!✨</p>
           <button onClick={() => setOpen(!open)} className="text-greenButtonDark hover:text-greenButtonLite transition duration-300 ease-in-out">
             <PlusSquare />
           </button>
@@ -156,8 +156,8 @@ const DodajVijest = () => {
           <div className="previewContent">
             <h2 className="previewText text-xl font-semibold text-secondaryColor">Preview:</h2>
             <PreviewComponent title={previewTitle} description={previewDescription}/>
-            <button className="closePreview text-grey" onClick={handleClosePreview}>
-              Close Preview
+            <button className="closePreview text-grey uppercase" onClick={handleClosePreview}>
+              Zatvori
             </button>
           </div>
         </div>

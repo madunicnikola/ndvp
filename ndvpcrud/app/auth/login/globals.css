@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,6 +7,19 @@ html,
 body,
 :root{
     height: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body::-webkit-scrollbar{
+  width: 0.25rem;
+}
+body::-webkit-scrollbar-track{
+  background: #17100d;
+  border-radius: 10px;
+}
+body::-webkit-scrollbar-thumb{
+  background: #FAF3DD;
+  border-radius: 10px;
 }
 
 @layer base {

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
@@ -8,10 +9,20 @@
     }
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 html,
 body,
 :root{
-    height: 100%;
+    height: 90%;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body::-webkit-scrollbar{
@@ -47,10 +58,13 @@ body{
     gap: 20px;
 }
 .previewText {
+    position: relative;
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: center;
+    border-bottom: 4mm ridge #FAF3DD;
+    bottom: 20px;
 }
 .previewWindow {
     position: fixed;
@@ -63,7 +77,8 @@ body{
     align-items: center;
     justify-content: center;
     z-index: 1000;
-  }
+    animation: fadeIn 1s ease-in-out;
+}
 .previewContent {
     background: #0B0705;
     padding: 20px;
@@ -77,4 +92,31 @@ body{
 .article-preview {
     height: 100vh;
     width: 100%;
+}
+.previewLinks {
+    font-family: 'Montserrat', sans-serif;
+    gap: 50px;
+}
+.previewContent::-webkit-scrollbar {
+    width: 0.4rem;
+}
+.previewContent::-webkit-scrollbar-track {
+    background: #17100d;
+    border-radius: 10px;
+}
+.previewContent::-webkit-scrollbar-thumb {
+    background: #FAF3DD;
+    border-radius: 10px;
+}
+
+.previewLinks .a{
+    box-shadow: inset 0 0 0 0 #FDF7E4;
+    color: #FDF7E4;
+    margin: 0 -.25rem;
+    padding: 0 .25rem;
+    transition: color .4s ease-in-out, box-shadow .4s ease-in-out;
+}
+.previewLinks .a:hover{
+    box-shadow: inset 200px 0 0 0 #362525;
+    color: white;
 }

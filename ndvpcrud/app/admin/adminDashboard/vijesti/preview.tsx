@@ -10,23 +10,23 @@ interface PreviewProps {
 const PreviewComponent: React.FC<PreviewProps> = ({ title, description }) => {
   return (
     <div className="article-preview bg-backgroundColor">
-      <div className="navbar">
-      <Image src="/images/scene2/scene2_2.png" alt="" width={300} height={300} objectFit='cover'/>
-      <ul>
+      <div className="navbar flex justify-between items-center">
+      <Image src="/images/scene2/scene2_2.png" alt="" width={150} height={150} objectFit='cover' className="hover: cursor-pointer"/>
+      <ul className="previewLinks flex uppercase">
         <li>
-          <Link href="#" className="text-secondaryColor font-md font-sans-montserrat">O nama</Link>
+          <Link href="#" className="a text-secondaryColor font-md font-sans-montserrat">O nama</Link>
         </li>
         <li>
-          <Link href="#" className="text-secondaryColor font-md font-sans-montserrat">Projekti</Link>
+          <Link href="#" className="a text-secondaryColor font-md font-sans-montserrat">Projekti</Link>
         </li>
         <li>
-          <Link href="#" className="text-secondaryColor font-md font-sans-montserrat">Kolumna</Link>
+          <Link href="#" className="a text-secondaryColor font-md font-sans-montserrat">Kolumna</Link>
         </li>
         <li>
-          <Link href="#" className="text-secondaryColor font-md font-sans-montserrat">Vijesti</Link>
+          <Link href="#" className="a text-secondaryColor font-md font-sans-montserrat">Vijesti</Link>
         </li>
         <li>
-          <Link href="#" className="text-secondaryColor font-md font-sans-montserrat">Sponzori</Link>
+          <Link href="#" className="a text-secondaryColor font-md font-sans-montserrat">Sponzori</Link>
         </li>
       </ul>
       </div>
