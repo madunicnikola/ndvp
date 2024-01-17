@@ -25,6 +25,8 @@ const config: Config = {
       destructive: '#FF7F7F',
       green: '#00d062',
       lightblue: '#AAD9E6',
+      greenButtonDark: '#65B741',
+      greenButtonLite: '#C1F2B0',
     },
     fontFamily: {
       'montserrat': ['Montserrat'],

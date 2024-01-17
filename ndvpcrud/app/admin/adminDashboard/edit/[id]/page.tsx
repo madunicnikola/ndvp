@@ -59,14 +59,14 @@ const preurediVijest = ({params}:{params: {id: string}}) => {
                 id: params.id,
             })
         toast.success("Uspješno postavljen! 💪", {id: "1"});
-        router.push("/");
+        router.push("/admin/adminDashboard");
         }
     };
     const handleDelete = async () => {
         toast.loading("Brišemo članak...", {id: "2"});
         await izbrisiVijest(params.id);
         toast.success("Uspješno obrisano!", {id: "2"});
-        router.push("/");
+        router.push("/admin/adminDashboard");
     };
     return (
         <Fragment>

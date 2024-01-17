@@ -13,3 +13,24 @@ body,
         @apply bg-backgroundColor;
     }
 }
+.editor {
+    display: flex;
+    gap: 20px;
+    height: 700px;
+}
+.container{
+
+}
+.button,.newButton {
+    width: 36px;
+    height: 36px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.addButtons {
+    position: relative;
+    display: flex;
+    gap: 20px;
+}

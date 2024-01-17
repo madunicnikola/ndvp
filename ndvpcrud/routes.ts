@@ -8,6 +8,6 @@ export const authRoutes = [
     "/auth/login",
 ];
 
-export const apiAuth = "/api/auth";
+export const apiAuth ="/api";
 
-export const LoginRedirect = "/admin"
+export const LoginRedirect = "/admin";
