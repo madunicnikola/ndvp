@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from 'react';
+import Image from "next/image";
 
 async function pokupiVijesti(){
   const res = await fetch("http://localhost:3000/api/vijesti", {
@@ -27,6 +28,11 @@ export default async function Blog() {
         {posts && posts.map((post: any) => (
           <div key={post.id} className="w-3/4 p-4 rounded-md mx-3 my-2 bg-blogBgColor flex flex-col justify-center">
             <div className="flex items-center my-3">
+              {post.img && (
+                <div className="mr-auto my-1">
+                  <Image src={post.img} alt={post.title} width={300} height={300} objectFit="contain"/>
+                </div>
+              )}
               <div className="mr-auto">
                 <h2 className="mr-auto font-semibold font-sans-montserrat text-secondaryColor">{post.title}</h2>
               </div>

@@ -7,6 +7,9 @@ const nextConfig = {
                 destination: '/index.html',
             },
         ]
+    },
+    images: {
+        domains: ["firebasestorage.googleapis.com"],
     }
 };
 
