@@ -5,9 +5,10 @@ import Link from 'next/link';
 interface PreviewProps {
   title: string;
   description: string;
+  img: string;
 }
 
-const PreviewComponent: React.FC<PreviewProps> = ({ title, description }) => {
+const PreviewComponent: React.FC<PreviewProps> = ({ title, description, img }) => {
   return (
     <div className="article-preview bg-backgroundColor">
       <div className="navbar flex justify-between items-center">
@@ -30,6 +31,9 @@ const PreviewComponent: React.FC<PreviewProps> = ({ title, description }) => {
         </li>
       </ul>
       </div>
+      {img && (
+        <Image src={img} alt="Vijesti" width={200} height={200} objectFit='cover'/>
+      )}
         <h2 className="text-xl font-semibold text-secondaryColor">{title}</h2>
         <p className="text-secondaryColor">{description}</p>
     </div>

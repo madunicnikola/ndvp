@@ -23,7 +23,7 @@ const storage = getStorage(app);
 const DodajVijest = () => {
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState<File | null>(null);
-  const [media, setMedia] = useState("");
+  const [media, setMedia] = useState<string | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [showPreview, setShowPreview] = useState(false);
   const [previewTitle, setPreviewTitle] = useState("");
@@ -32,6 +32,7 @@ const DodajVijest = () => {
   const handleCloseImage = () => {
     setFile(null);
     setImagePreview(null);
+    setMedia(null);
   };
 
   const handlePreview = () => {
@@ -100,7 +101,7 @@ const DodajVijest = () => {
     e.preventDefault();
     if (titleRef.current && descriptionRef.current && file) {
       toast.loading("Članak se postavlja... 🙏", { id: "1" });
-      await postaviVijest({ title: titleRef.current?.value, description: descriptionRef.current?.value, file: media });
+      await postaviVijest({ title: titleRef.current?.value, description: descriptionRef.current?.value, file: media || "" });
       toast.success("Uspješno postavljen! 💪", { id: "1" });
       router.push("/admin/adminDashboard");
     }
@@ -155,7 +156,7 @@ const DodajVijest = () => {
         <div className="previewWindow">
           <div className="previewContent">
             <h2 className="previewText text-xl font-semibold text-secondaryColor">Preview:</h2>
-            <PreviewComponent title={previewTitle} description={previewDescription}/>
+            <PreviewComponent title={previewTitle} description={previewDescription} img={media || ''}/>
             <button className="closePreview text-grey uppercase" onClick={handleClosePreview}>
               Zatvori
             </button>
