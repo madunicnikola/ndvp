@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from 'react';
+import {AppStateProvider} from "../components/maintenance/maintenance.js";
+import MaintenanceAlert from "../components/form/MaintenanceAlert.js";
 
 async function pokupiVijesti(){
   const res = await fetch("http://localhost:3000/api/vijesti", {

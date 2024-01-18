@@ -2,8 +2,8 @@ import { auth, signOut } from "@/auth"
 import { LogOut } from "lucide-react";
 
 const mainAdmin = async () => {
-  const session = await auth;
-
+  const session = await auth;  
+  
   return (
     <div>
       <form action={async () => {
@@ -19,3 +19,4 @@ const mainAdmin = async () => {
   )
 }
 export default mainAdmin;
+

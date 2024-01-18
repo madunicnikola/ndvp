@@ -244,7 +244,7 @@ const DodajVijest = () => {
         <div className="previewWindow">
           <div className="previewContent">
             <h2 className="previewText text-xl font-semibold text-secondaryColor">Preview:</h2>
-            <PreviewComponent title={previewTitle} description={previewDescription} img={media || ''}/>
+            <PreviewComponent title={previewTitle} description={previewDescription} imgFileUrl={imagePreview} videoFileUrl={videoPreview} fileUrl={filePreview}/>
             <button className="closePreview text-grey uppercase" onClick={handleClosePreview}>
               Zatvori
             </button>
