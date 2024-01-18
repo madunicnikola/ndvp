@@ -21,7 +21,7 @@
 html,
 body,
 :root{
-    height: 90%;
+    height: 100%;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -119,4 +119,12 @@ body{
 .previewLinks .a:hover{
     box-shadow: inset 200px 0 0 0 #362525;
     color: white;
+}
+.videoPreview{
+    border-radius: 4px;
+    border: 2px solid #FDF7E4;;
+}
+.imagePreview{
+    border-radius: 4px;
+    border: 2px solid #FDF7E4;;
 }

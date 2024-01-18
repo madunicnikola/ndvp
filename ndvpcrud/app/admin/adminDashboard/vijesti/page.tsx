@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { Fragment, useEffect, useRef, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { Download, PlusSquare, Image, FileVideo, X } from "lucide-react";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -24,17 +24,46 @@ const DodajVijest = () => {
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [media, setMedia] = useState<string | null>(null);
+
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [showPreview, setShowPreview] = useState(false);
+
   const [previewTitle, setPreviewTitle] = useState("");
   const [previewDescription, setPreviewDescription] = useState("");
+  
+  const [videoPreview, setVideoPreview] = useState<string | null>(null);
+  const [filePreview, setFilePreview] = useState<string | null>(null);
 
   const handleCloseImage = () => {
     setFile(null);
     setImagePreview(null);
     setMedia(null);
   };
+  
+  const handleCloseVideoPreview = () => {
+    setFile(null);
+    setVideoPreview(null);
+  }
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files && e.target.files[0];
+
+    if (selectedFile) {
+      setFile(selectedFile);
+
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setFilePreview(reader.result as string);
+    };
+
+    reader.readAsDataURL(selectedFile);
+    }
+  }
+  const handleCloseFile = () => {
+    setFile(null);
+    setFilePreview(null);
+  }
   const handlePreview = () => {
     setPreviewTitle(titleRef.current?.value || "");
     setPreviewDescription(descriptionRef.current?.value || "");
@@ -47,19 +76,42 @@ const DodajVijest = () => {
     console.log("Preview closed");
   };
 
+  const handleVideoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedVideo = e.target.files && e.target.files[0];
+
+    if (selectedVideo) {
+      setFile(selectedVideo);
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setVideoPreview(reader.result as string);
+    };
+
+    reader.readAsDataURL(selectedVideo);
+  }
+};
+
+  const handleImagePreview = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedImage = e.target.files && e.target.files[0];
+
+    if (selectedImage){
+      setFile(selectedImage);
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result as string);
+      };
+
+      reader.readAsDataURL(selectedImage);
+    }
+  }
+
   const router = useRouter();
   const titleRef = useRef<HTMLInputElement | null>(null);
   const descriptionRef = useRef<HTMLTextAreaElement | null>(null);
 
   useEffect(() => {
     if (file != null) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result as string);
-      };
-
-      reader.readAsDataURL(file);
-
       const upload = async () => {
         const name = new Date().getTime() + file.name;
         const storageRef = ref(storage, file.name);
@@ -93,7 +145,6 @@ const DodajVijest = () => {
       file && upload();
     } else {
       console.log("Nijedna datoteka nije odabrana!");
-      setImagePreview(null);
     }
   }, [file]);
 
@@ -118,26 +169,63 @@ const DodajVijest = () => {
           </button>
           {open && (
             <div className="addButtons">
-              <input type="file" id="image" onChange={(e) => (e.target.files && e.target.files[0] ? setFile(e.target.files[0]) : console.log("No file selected"))} multiple style={{ display: "none" }} />
+              <input type="file" id="image" accept=".jpg, .jpeg, .png, .svg" onChange={handleImagePreview} multiple style={{display: "none"}}/>
               <button className="newButton text-darkRed hover:text-red transition duration-300 ease-in-out">
                 <label htmlFor="image" className="hover:cursor-pointer">
                   <Image />
                 </label>
               </button>
+              <input type="file" id="video" accept=".mp4, .avi, .mov, .mkv" onChange={(e) => handleVideoChange(e)} multiple style={{display: "none"}}/>
               <button className="newButton text-darkRed hover:text-red transition duration-300 ease-in-out">
-                <FileVideo />
+                <label htmlFor="video" className="hover:cursor-pointer">
+                  <FileVideo />
+                </label>
               </button>
+              <input type="file" id="file" accept=".docx, .pdf, .txt" onChange={handleFileChange} multiple style={{display: "none"}}/>
               <button className="newButton text-darkRed hover:text-red transition duration-300 ease-in-out">
-                <Download />
+                <label htmlFor="file" className="hover:cursor-pointer">
+                  <Download />
+                </label>
               </button>
             </div>
           )}
-          {imagePreview && (
+          {imagePreview !== null && (
             <div>
               <div className="relative inline-block">
-                <img src={imagePreview} alt="Odabrana slika je: " style={{ maxWidth: "20%" }} />
+                <img src={imagePreview} alt="Odabrana slika je: " width={200} height={200} className="imagePreview"/>
                 <button onClick={handleCloseImage}>
                   <X className="absolute top-0 right-15 text-grey" />
+                </button>
+              </div>
+            </div>
+          )}
+          {videoPreview !== null && (
+            <div>
+              <div className="relative inline-block">
+                <video controls width={200} height={200} className="videoPreview">
+                  <source src={videoPreview} type={file?.type || "video/mp4"}/>
+                  Vaš pretraživač ne podržava ovu vrstu video materijala.
+                </video>
+                <button onClick={handleCloseVideoPreview}>
+                  <X className="absolute top-0 right-15 text-grey"/>
+                </button>
+              </div>
+            </div>
+          )}
+          {filePreview && file && (
+            <div> 
+              <div className="relative inline-block">
+                {file.type === "application/pdf" && (
+                  <embed src={filePreview} type="application/pdf" width={200} height={200} />
+                )}
+                {file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" && (
+                  <iframe src={`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(filePreview)}`} width="200" height="150"></iframe>
+                )}
+                {file.type === "text/plain" && (
+                  <pre>{filePreview}</pre>
+                )}
+                <button onClick={handleCloseFile}>
+                  <X className="absolute top-0 right-15 text-grey"/>
                 </button>
               </div>
             </div>
