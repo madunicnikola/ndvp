@@ -33,15 +33,20 @@ const PreviewComponent: React.FC<PreviewProps> = ({ title, description, imgFileU
         </li>
       </ul>
       </div>
-      <div className="flex flex-col md:flex-row">
-        <div className="md:w-1/2 relative">
-          {imgFileUrl && (
-              <Image src={imgFileUrl} alt="Vijesti" width={200} height={200} objectFit='cover' className="imagePreviewContainer"/>
-          )}
+      <div className="parallax">
+        <div className="flex flex-col md:flex-row">
+          <div className="md:w-1/2 p-4">
+            <h2 className="text-xl font-semibold text-secondaryColor">{title}</h2>
+          </div>
+          <div className="md:w-1/2 relative">
+            {imgFileUrl && (
+              <Image src={imgFileUrl} alt="Vijesti" width={200} height={200} objectFit='cover' className="imagePreviewContainer" />
+            )}
+          </div>
         </div>
-        <div className="md:w-1/2 p-4">
-          <h2 className="text-xl font-semibold text-secondaryColor">{title}</h2>
-        </div>
+      </div>
+      <div className="mainContent md:w-1/2 p-4">
+        <p className="text-secondaryColor">{description}</p>
       </div>
       {videoFileUrl && (
         <div className="video-preview">
@@ -56,7 +61,6 @@ const PreviewComponent: React.FC<PreviewProps> = ({ title, description, imgFileU
             <iframe src={fileUrl} width={200} height={200} />
         </div>
       )}
-        <p className="text-secondaryColor">{description}</p>
     </div>
   );
 };

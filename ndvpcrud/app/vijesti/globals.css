@@ -1,15 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
- 
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
 html,
 body,
 :root{
     height: 100%;
     font-family: 'Montserrat', sans-serif;
 }
-
 body::-webkit-scrollbar{
   width: 0.25rem;
 }
@@ -21,9 +20,77 @@ body::-webkit-scrollbar-thumb{
   background: #FAF3DD;
   border-radius: 10px;
 }
-
 @layer base {
   body{
     @apply bg-backgroundColor;
   }
+}
+
+.mainCard {
+  background-color: #FFFDD0;
+  border-radius: 20px;
+  padding: 24px;
+  max-width: 384px;
+  position: relative;
+  border: 2px solid #1D2B53;
+}
+.mainCard::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #202020;
+  top: 8px;
+  left: 8px;
+  border-radius: 20px;
+  z-index: -1;
+  transition: all 300ms;
+}
+.mainCard.hover::after {
+  top: 16px;
+  left: 16px;
+}
+.mainCard .image {
+  position: relative;
+  height: clamp(10rem, -4.5455rem + 72.7273vw, 12.5rem);
+}
+.mainCard .image .Image{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 4px;
+  border: 10px solid #202020;
+}
+.mainCard .content {
+  margin-top: 15px;
+}
+.mainCard .mainTitle {
+  font-size: clamp(1.25rem, -0.3947rem + 7.0175vw, 1.5rem);
+  margin-block-start: 18px;
+  color: #202020;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.mainCard .mainTitle a {
+  text-decoration: none;
+}
+.mainCard .mainDescription {
+  margin-block-start: 16px;
+  font-size: clamp(0.875rem, 0.0526rem + 3.5088vw, 1rem);
+  letter-spacing: -0.07px;
+  color: #202020;
+}
+.mainCard Button {
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  margin: 16px;
+  background-color: #202020;
+}
+.mainCard .datetime {
+  margin-top: 15px;
+  color: rgb(211, 211, 211);
 }

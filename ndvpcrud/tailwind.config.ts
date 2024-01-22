@@ -27,6 +27,7 @@ const config: Config = {
       lightblue: '#AAD9E6',
       greenButtonDark: '#65B741',
       greenButtonLite: '#C1F2B0',
+      grayHover: '#333',
     },
     fontFamily: {
       'montserrat': ['Montserrat'],

@@ -1,8 +1,11 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from 'react';
+import React, {useRef} from 'react';
 import {AppStateProvider} from "../components/maintenance/maintenance.js";
 import MaintenanceAlert from "../components/form/MaintenanceAlert.js";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 async function pokupiVijesti(){
   const res = await fetch("http://localhost:3000/api/vijesti", {
@@ -15,9 +18,13 @@ async function pokupiVijesti(){
 }
 
 export default async function Blog() {
+  const router = useRouter();
   const posts = await pokupiVijesti();
   console.log(posts);
 
+  const onClick = () => {
+    router.push("./vijesti");
+};
   return (
     <main className="w-full h-full">
       <div className="md:w-2/4 sm:w-3/4 m-auto p-4 my-5 rounded-lg drop-shadow-xl"> 
@@ -25,24 +32,27 @@ export default async function Blog() {
       </div>
       <div className="w-full flex flex-col justify-center items-center">
         {posts && posts.map((post: any) => (
-          <div key={post.id} className="w-3/4 p-4 rounded-md mx-3 my-2 bg-blogBgColor flex flex-col justify-center">
-            <div className="flex items-center my-3">
-            <div className="mr-auto my-1">
+          <article key={post.id} className="mainCard">
+            <div className="image">
               {post.img && (
-                <Image src={post.img} alt={post.title} width={300} height={300} objectFit="contain"/>
+                <Image src={post.img} alt={post.title} width={300} height={300} className="Image" priority={true}/>
               )}
             </div>
-              <div className="mr-auto">
-                <h2 className="mr-auto font-semibold font-sans-montserrat text-secondaryColor">{post.title}</h2>
-              </div>
+            <div className="content">
+              <h2 className="mainTitle font-bold">
+                {post.title}
+              </h2>
+              <p className="mainDescription">
+                {post.description}
+              </p>
             </div>
-            <div className="mr-auto my-1">
-              <blockquote className="font-extralight text-grey font-sans-montserrat">{new Date(post.date).toDateString()}</blockquote>
-            </div>
-            <div className="mr-auto my-1">
-              <h2 className="font-regular text-secondaryColor font-sans-montserrat normal-case">{post.description}</h2>
-            </div>
-          </div>
+            <p className="datetime">
+                {new Date(post.date).toDateString()}
+              </p>
+            <Button onClick={onClick} className="cursor-pointer text-secondaryColor py-2 px-4 rounded-md uppercase hover:bg-grayHover transition duration-300 ease-in-out">
+                Otvori
+            </Button>
+          </article>
         ))}
       </div>
     </main>
