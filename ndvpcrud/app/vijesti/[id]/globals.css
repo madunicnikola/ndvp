@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+html,
+body,
+:root{
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+body::-webkit-scrollbar{
+  width: 0.25rem;
+}
+body::-webkit-scrollbar-track{
+  background: #FAF3DD;
+  border-radius: 10px;
+}
+body::-webkit-scrollbar-thumb{
+  background: #17100d;
+  border-radius: 10px;
+}
+@layer base {
+  body{
+    @apply bg-secondaryColor;
+  }
+}
+.navbar {
+    height: 100px;
+    background-color: #FFFDD0;
+}
+.previewLinks {
+    font-family: 'Montserrat', sans-serif;
+    gap: 50px;
+}
+.previewLinks .a{
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: inset 0 0 0 0 #FDF7E4;
+    color: #000;
+    margin-right: 30px;
+    padding: 0 .25rem;
+    transition: color .4s ease-in-out, box-shadow .4s ease-in-out;
+}
+.previewLinks .a:hover{
+    box-shadow: inset 200px 0 0 0 #D4F1F4;
+    color: white;
+}
+.mainHeader {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+.headerImageSection {
+    position: relative;
+    width: 70%;
+    height: 100%;
+    overflow: hidden;
+    background-attachment: fixed;
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.headerImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.headerContentSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 100vh;
+    position: relative;
+    z-index: 2; 
+    padding: 20px;
+    background-color: #D4F1F4;
+    align-items: center;
+    text-align: center;
+}
+.headerContent {
+    color: #fff; 
+    padding: 20px;
+}
+.mainSection {
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    left: 30%;
+    box-sizing: border-box; 
+}
+.mainSection p{
+    line-height: 2;
+    letter-spacing: 1px;
+}
+.headerTitle {
+    font-size: 5vh;
+    font-weight: bold;
+    color: #0A1D56;
+}
+.headerDesc {
+    margin-top: 20px;
+    font-size: 24px;;
+    color: #202020;
+}

@@ -7,10 +7,10 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/
 import { app } from "@/firebase";
 import PreviewComponent from "./preview";
 
-const postaviVijest = async ({ title, description, file }: { title: string; description: string; file: string }) => {
+const postaviVijest = async ({ title, description, file, content }: { title: string; description: string; file: string, content: string }) => {
   const res = await fetch("http://localhost:3000/api/vijesti", {
     method: "POST",
-    body: JSON.stringify({ title, description, img: file }),
+    body: JSON.stringify({ title, description, img: file, content }),
     headers: {
       "Content-Type": "application/json",
     },
@@ -30,6 +30,7 @@ const DodajVijest = () => {
 
   const [previewTitle, setPreviewTitle] = useState("");
   const [previewDescription, setPreviewDescription] = useState("");
+  const [previewContent, setPreviewContent] = useState("");
   
   const [videoPreview, setVideoPreview] = useState<string | null>(null);
   const [filePreview, setFilePreview] = useState<string | null>(null);
@@ -67,6 +68,7 @@ const DodajVijest = () => {
   const handlePreview = () => {
     setPreviewTitle(titleRef.current?.value || "");
     setPreviewDescription(descriptionRef.current?.value || "");
+    setPreviewContent(contentRef.current?.value || "");
     setShowPreview(true);
     console.log("Preview opened");
   };
@@ -108,7 +110,9 @@ const DodajVijest = () => {
 
   const router = useRouter();
   const titleRef = useRef<HTMLInputElement | null>(null);
-  const descriptionRef = useRef<HTMLTextAreaElement | null>(null);
+  const descriptionRef = useRef<HTMLInputElement | null>(null);
+  const contentRef = useRef<HTMLTextAreaElement | null>(null);
+  const idRef = useRef("");
 
   useEffect(() => {
     if (file != null) {
@@ -150,9 +154,9 @@ const DodajVijest = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    if (titleRef.current && descriptionRef.current && file) {
+    if (titleRef.current && descriptionRef.current && file && contentRef.current) {
       toast.loading("Članak se postavlja... 🙏", { id: "1" });
-      await postaviVijest({ title: titleRef.current?.value, description: descriptionRef.current?.value, file: media || "" });
+      await postaviVijest({ title: titleRef.current?.value, description: descriptionRef.current?.value, file: media || "", content: contentRef.current?.value});
       toast.success("Uspješno postavljen! 💪", { id: "1" });
       router.push("/admin/adminDashboard");
     }
@@ -232,10 +236,11 @@ const DodajVijest = () => {
           )}
           <form onSubmit={handleSubmit}>
             <input ref={titleRef} type="text" className="rounded-md px-4 py-2 my-2 w-full" placeholder="naslov" />
-            <textarea ref={descriptionRef} className="rounded-md px-4 py-2 w-full my-2" placeholder="sadržaj"></textarea>
+            <input ref={descriptionRef} className="rounded-md px-4 py-2 w-full my-2" placeholder="podnaslov"></input>
+            <textarea ref={contentRef} className="rounded-md px-4 py-2 w-full my-2 mt-8 h-[150px]" placeholder="sadržaj"></textarea>
             <button className="font-semibold px-4 py-2 shadow-xl bg-chocolate text-secondaryColor rounded-lg m-auto uppercase hover:bg-buttonColor hover: transition duration-300 ease-in-out">Podnesi</button>
           </form>
-          <button type="button" className="font-semibold px-4 py-2 shadow-xl bg-chocolate text-secondaryColor rounded-lg m-auto uppercase hover:bg-buttonColor hover: transition duration-300 ease-in-out" onClick={handlePreview}>
+          <button type="button" className="font-semibold px-4 py-2 mb-10 shadow-xl bg-chocolate text-secondaryColor rounded-lg m-auto uppercase hover:bg-buttonColor hover: transition duration-300 ease-in-out" onClick={handlePreview}>
               Pregledaj
             </button>
         </div>
@@ -244,7 +249,7 @@ const DodajVijest = () => {
         <div className="previewWindow">
           <div className="previewContent">
             <h2 className="previewText text-xl font-semibold text-secondaryColor">Preview:</h2>
-            <PreviewComponent title={previewTitle} description={previewDescription} imgFileUrl={imagePreview} videoFileUrl={videoPreview} fileUrl={filePreview}/>
+            <PreviewComponent title={previewTitle} description={previewDescription} imgFileUrl={imagePreview} videoFileUrl={videoPreview} fileUrl={filePreview} content={previewContent}/>
             <button className="closePreview text-grey uppercase" onClick={handleClosePreview}>
               Zatvori
             </button>

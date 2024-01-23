@@ -26,25 +26,31 @@ export default async function Blog() {
       </div>
       <div className="w-full flex flex-col justify-center items-center">
         {posts && posts.map((post: any) => (
-          <div key={post.id} className="w-3/4 p-4 rounded-md mx-3 my-2 bg-blogBgColor flex flex-col justify-center">
+          <div key={post.id} className="w-3/4 p-4 rounded-md mx-3 my-2 bg-darkBlack flex flex-col justify-center">
             <div className="flex items-center my-3">
               {post.img && (
                 <div className="mr-auto my-1">
-                  <Image src={post.img} alt={post.title} width={300} height={300} objectFit="contain"/>
+                  <Image src={post.img} alt={post.title} width={300} height={300} objectFit="contain" className="rounded-md"/>
                 </div>
               )}
               <div className="mr-auto">
-                <h2 className="mr-auto font-semibold text-secondaryColor">{post.title}</h2>
+                <h2 className="mr-auto font-semibold text-secondaryColor text-2xl">{post.title}</h2>
               </div>
-              <Link href={`/admin/adminDashboard/edit/${post.id}`} className="px-4 py-1 bg-buttonColor rounded-md text-center text-xl text-secondaryColor uppercase hover: transition duration-300 ease-in-out">
+              <Link href={`/admin/adminDashboard/edit/${post.id}`} className="px-4 py-1 bg-black rounded-md text-center text-xl text-secondaryColor uppercase hover: transition duration-300 ease-in-out">
                 Uredi
               </Link>
             </div>
             <div className="mr-auto my-1">
-              <blockquote className="font-extralight text-grey">{new Date(post.date).toDateString()}</blockquote>
+              <blockquote className="font-extralight text-lightblue">{new Date(post.date).toDateString()}</blockquote>
+            </div>
+            <div>
+              <p className="text-secondaryColor">{post.id}</p>
             </div>
             <div className="mr-auto my-1">
-              <h2 className="font-regular text-secondaryColor normal-case">{post.description}</h2>
+              <h2 className="font-light text-secondaryColor normal-case">{post.description}</h2>
+            </div>
+            <div className="mr-auto my-1 text-secondaryColor">
+              <p>{post.content}</p>
             </div>
           </div>
         ))}

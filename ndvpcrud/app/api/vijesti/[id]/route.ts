@@ -21,10 +21,10 @@ export const GET = async (req: Request, res: NextResponse) => {
 export const PUT = async (req: Request, res: NextResponse) => {
     try {
         const id = req.url.split("/vijesti/")[1];
-        const { title, description } = await req.json();
+        const { title, description, content } = await req.json();
         await main();
         const post = await prisma.post.update({ 
-            data: { title, description }, 
+            data: { title, description, content }, 
             where: { id },
         });
         return NextResponse.json({message: "Success", post}, {status: 200});

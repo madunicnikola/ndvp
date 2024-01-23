@@ -8,9 +8,10 @@ interface PreviewProps {
   imgFileUrl: string | null;
   videoFileUrl: string | null;
   fileUrl: string | null;
+  content: string;
 }
 
-const PreviewComponent: React.FC<PreviewProps> = ({ title, description, imgFileUrl, videoFileUrl, fileUrl }) => {
+const PreviewComponent: React.FC<PreviewProps> = ({ title, description, imgFileUrl, videoFileUrl, fileUrl, content }) => {
   return (
     <div className="article-preview bg-backgroundColor">
       <div className="navbar flex justify-between items-center">
@@ -47,6 +48,11 @@ const PreviewComponent: React.FC<PreviewProps> = ({ title, description, imgFileU
       </div>
       <div className="mainContent md:w-1/2 p-4">
         <p className="text-secondaryColor">{description}</p>
+      </div>
+      <div className='contentPreview'>
+          <p className='contentText text-secondaryColor'>
+            {content}
+          </p>
       </div>
       {videoFileUrl && (
         <div className="video-preview">

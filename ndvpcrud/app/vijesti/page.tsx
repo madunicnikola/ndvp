@@ -2,8 +2,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, {useRef} from 'react';
-import {AppStateProvider} from "../components/maintenance/maintenance.js";
-import MaintenanceAlert from "../components/form/MaintenanceAlert.js";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 
@@ -22,15 +20,12 @@ export default async function Blog() {
   const posts = await pokupiVijesti();
   console.log(posts);
 
-  const onClick = () => {
-    router.push("./vijesti");
-};
   return (
     <main className="w-full h-full">
       <div className="md:w-2/4 sm:w-3/4 m-auto p-4 my-5 rounded-lg drop-shadow-xl"> 
-      <h1 className="text-center text-5xl font-sans-montserrat uppercase text-secondaryColor"> Novosti </h1>
+        <h1 className="text-center text-5xl font-sans-montserrat uppercase text-secondaryColor"> Novosti </h1>
       </div>
-      <div className="w-full flex flex-col justify-center items-center">
+      <div className="blog w-full flex justify-center items-center">
         {posts && posts.map((post: any) => (
           <article key={post.id} className="mainCard">
             <div className="image">
@@ -49,9 +44,11 @@ export default async function Blog() {
             <p className="datetime">
                 {new Date(post.date).toDateString()}
               </p>
-            <Button onClick={onClick} className="cursor-pointer text-secondaryColor py-2 px-4 rounded-md uppercase hover:bg-grayHover transition duration-300 ease-in-out">
-                Otvori
-            </Button>
+            <Link href={`/vijesti/${post.id}`}>
+              <Button className="cursor-pointer text-secondaryColor py-2 px-4 rounded-md uppercase hover:bg-grayHover transition duration-300 ease-in-out">
+                  Otvori
+              </Button>
+            </Link>
           </article>
         ))}
       </div>
