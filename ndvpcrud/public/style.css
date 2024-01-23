@@ -221,14 +221,17 @@ path {
 .large {
 	-webkit-animation: large 2.5s infinite;
 	-moz-animation: large 2.5s infinite;
+  animation: large 2.5s infinite;
 }
 .large-2 {
 	-webkit-animation: large-2 2.5s infinite;
 	-moz-animation: large-2 2.5s infinite;
+  animation: large-2 2.5s infinite;
 }
 .small {
 	-webkit-animation: small 2.5s infinite;
 	-moz-animation: small 2.5s infinite;
+  animation: small 2.5s infinite;
 }
 
 @keyframes large {
