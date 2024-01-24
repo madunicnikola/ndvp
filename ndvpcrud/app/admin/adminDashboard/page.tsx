@@ -30,7 +30,7 @@ export default async function Blog() {
             <div className="flex items-center my-3">
               {post.img && (
                 <div className="mr-auto my-1">
-                  <Image src={post.img} alt={post.title} width={300} height={300} objectFit="contain" className="rounded-md"/>
+                  <Image src={post.img} alt={post.title} width={300} height={300} className="rounded-md" style={{objectFit: "contain"}} priority={true}/>
                 </div>
               )}
               <div className="mr-auto">

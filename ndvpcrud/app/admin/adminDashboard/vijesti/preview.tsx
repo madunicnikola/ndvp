@@ -41,7 +41,7 @@ const PreviewComponent: React.FC<PreviewProps> = ({ title, description, imgFileU
           </div>
           <div className="md:w-1/2 relative">
             {imgFileUrl && (
-              <Image src={imgFileUrl} alt="Vijesti" width={200} height={200} objectFit='cover' className="imagePreviewContainer" />
+              <Image src={imgFileUrl} alt="Vijesti" width={200} height={200} className="imagePreviewContainer" style={{objectFit: "cover"}}/>
             )}
           </div>
         </div>

@@ -1,6 +1,6 @@
-import type { Metadata } from 'next';
+import "./adminDashboard/globals.css";
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'NDVP',
   description: 'ndvp main site',
 }

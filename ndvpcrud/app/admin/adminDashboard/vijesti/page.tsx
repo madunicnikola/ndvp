@@ -112,7 +112,6 @@ const DodajVijest = () => {
   const titleRef = useRef<HTMLInputElement | null>(null);
   const descriptionRef = useRef<HTMLInputElement | null>(null);
   const contentRef = useRef<HTMLTextAreaElement | null>(null);
-  const idRef = useRef("");
 
   useEffect(() => {
     if (file != null) {
