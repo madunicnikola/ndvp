@@ -1,9 +1,7 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, {useRef} from 'react';
+import React from 'react';
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
 
 async function pokupiVijesti(){
   const res = await fetch("http://localhost:3000/api/vijesti", {
@@ -16,7 +14,6 @@ async function pokupiVijesti(){
 }
 
 export default async function Blog() {
-  const router = useRouter();
   const posts = await pokupiVijesti();
   console.log(posts);
 
@@ -27,7 +24,7 @@ export default async function Blog() {
       </div>
       <div className="blog w-full flex justify-center items-center">
         {posts && posts.map((post: any) => (
-          <article key={post.id} className="mainCard">
+          <article key={posts.id} className="mainCard">
             <div className="image">
               {post.img && (
                 <Image src={post.img} alt={post.title} width={300} height={300} className="Image" priority={true}/>

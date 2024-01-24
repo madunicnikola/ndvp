@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 async function pokupiVijesti(){
     const res = await fetch("http://localhost:3000/api/vijesti", {
@@ -13,9 +13,7 @@ async function pokupiVijesti(){
   }
   
 export default async function BlogPost(){
-  const posts = await pokupiVijesti();
-  console.log(posts);
-
+      const posts = await pokupiVijesti();
   return (
     <div>
     <div className="navbar flex justify-between items-center">
@@ -38,8 +36,8 @@ export default async function BlogPost(){
         </li>
       </ul>
       </div>
-      {posts && posts.map((post: any) => (
-      <React.Fragment key={post.id}>
+      {posts.map((post: any) => (
+      <div key={post.id}>
             <section className='mainHeader'>
                 <div className='headerContentSection'>
                     <div className="headerContent">
@@ -57,7 +55,7 @@ export default async function BlogPost(){
                   <p>{post.content}</p>
                 </div>
             </section>
-      </React.Fragment>
+      </div>
     ))}
     </div>
   )
