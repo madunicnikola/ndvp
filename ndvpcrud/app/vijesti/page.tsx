@@ -1,21 +1,26 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from 'react';
 import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
 
-export async function getStaticProps() {
-  const res = await fetch("http://localhost:3000/api/vijesti");
-  const data = await res.json();
-  const posts = data.posts || [];
+export default function Blog() {
+  const [posts, setPosts] = useState([]);
 
-  return {
-    props: {
-      posts,
-    },
-  };
-}
+  useEffect(() => {
+    const fetchData = async () => {
+        const response = await fetch("http://localhost:3000/api/vijesti");
+        const data = await response.json();
+        setPosts(data.posts || []);
+    };
 
-export default function Blog({posts}: {posts: any[]}) {
+    fetchData();
+  }, []);
+
+  if (!posts) {
+    return <div>Loading...</div>;
+  }
 
   return (
         <div className="w-full h-full">

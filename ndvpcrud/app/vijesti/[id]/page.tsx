@@ -1,19 +1,25 @@
+"use client";
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { useState, useEffect } from 'react';
 
-export async function getStaticProps(){
-      const res = await fetch("http://localhost:3000/api/vijesti");
-      const data = await res.json();
-      const posts = data.posts || [];
-  return {
-    props: {
-      posts,
-    }
+export default function BlogPost(){
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+        const response = await fetch("http://localhost:3000/api/vijesti");
+        const data = await response.json();
+        setPosts(data.posts || []);
+    };
+
+    fetchData();
+  }, []);
+
+  if (!posts) {
+    return <div>Loading...</div>;
   }
-  }
-  
-export default function BlogPost({posts}: {posts: any[]}){
   return (
       <div>
       <div className="navbar flex justify-between items-center">

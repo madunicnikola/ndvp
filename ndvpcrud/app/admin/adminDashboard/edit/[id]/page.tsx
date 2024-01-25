@@ -75,20 +75,20 @@ const preurediVijest = ({params}:{params: {id: string}}) => {
     return (
         <Fragment>
             <Toaster/>
-            <div className="w-full m-auto flex my-4">
-                <div className="flex flex-col justify-center m-auto">
-                    <p className="text-2xl text-secondaryColor font-bold p-3 font-sans-montserrat uppercase text-center justify-center">Naše vijesti!✨</p>
-                    <form onSubmit={handleSubmit}>
-                        <input ref={titleRef} type="text" className="rounded-md px-4 py-2 my-2 w-full" placeholder="promjeni naslov"/>
-                        <input ref={descriptionRef} className="rounded-md px-4 py-2 w-full my-2" placeholder="promjeni opis"></input>
-                        <textarea ref={contentRef} className="rounded-md px-4 py-2 w-full my-2" placeholder="promjeni sadržaj"></textarea>
-                        <div className=" justify-between">
-                        <button className="font-semibold px-4 py-2 my-2 shadow-xl bg-chocolate text-secondaryColor rounded-lg m-auto uppercase hover:bg-buttonColor hover: transition duration-300 ease-in-out">Podnesi</button>
-                        </div>
-                    </form>
-                    <button onClick={handleDelete} className="font-semibold mt-3 my-2 px-4 py-2 shadow-xl bg-red text-secondaryColor rounded-lg m-auto uppercase hover:bg-darkRed hover: transition duration-300 ease-in-out">Ukloni</button>
-                </div>
-            </div>
+                 <div className="w-full m-auto flex my-4">
+                 <div className="flex flex-col justify-center m-auto">
+                     <p className="text-2xl text-secondaryColor font-bold p-3 font-sans-montserrat uppercase text-center justify-center">Naše vijesti!✨</p>
+                     <form onSubmit={handleSubmit}>
+                         <input ref={titleRef} type="text" className="rounded-md px-4 py-2 my-2 w-full" placeholder="promjeni naslov"/>
+                         <input ref={descriptionRef} className="rounded-md px-4 py-2 w-full my-2" placeholder="promjeni opis"></input>
+                         <textarea ref={contentRef} className="rounded-md px-4 py-2 w-full my-2" placeholder="promjeni sadržaj"></textarea>
+                         <div className=" justify-between">
+                         <button className="font-semibold px-4 py-2 my-2 shadow-xl bg-chocolate text-secondaryColor rounded-lg m-auto uppercase hover:bg-buttonColor hover: transition duration-300 ease-in-out">Podnesi</button>
+                         </div>
+                     </form>
+                     <button onClick={handleDelete} className="font-semibold mt-3 my-2 px-4 py-2 shadow-xl bg-red text-secondaryColor rounded-lg m-auto uppercase hover:bg-darkRed hover: transition duration-300 ease-in-out">Ukloni</button>
+                 </div>
+             </div>
         </Fragment>
     )
 }
