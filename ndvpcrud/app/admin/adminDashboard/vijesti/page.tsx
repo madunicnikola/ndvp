@@ -2,10 +2,11 @@
 import { useRouter } from "next/navigation";
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { Download, PlusSquare, Image, FileVideo, X } from "lucide-react";
+import { Download, PlusSquare, ImageDown, FileVideo, X } from "lucide-react";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { app } from "@/firebase";
 import PreviewComponent from "./preview";
+import Image from "next/image";
 
 const postaviVijest = async ({ title, description, file, content }: { title: string; description: string; file: string, content: string }) => {
   const res = await fetch("http://localhost:3000/api/vijesti", {
@@ -15,8 +16,10 @@ const postaviVijest = async ({ title, description, file, content }: { title: str
       "Content-Type": "application/json",
     },
   });
-  return res.json();
+  const data = await res.json();
+  return data.id;
 };
+
 
 const storage = getStorage(app);
 
@@ -175,7 +178,7 @@ const DodajVijest = () => {
               <input type="file" id="image" accept=".jpg, .jpeg, .png, .svg" onChange={handleImagePreview} multiple style={{display: "none"}}/>
               <button className="newButton text-darkRed hover:text-red transition duration-300 ease-in-out">
                 <label htmlFor="image" className="hover:cursor-pointer">
-                  <Image />
+                  <ImageDown/>
                 </label>
               </button>
               <input type="file" id="video" accept=".mp4, .avi, .mov, .mkv" onChange={(e) => handleVideoChange(e)} multiple style={{display: "none"}}/>
@@ -195,7 +198,7 @@ const DodajVijest = () => {
           {imagePreview !== null && (
             <div>
               <div className="relative inline-block">
-                <img src={imagePreview} alt="Odabrana slika je: " width={200} height={200} className="imagePreview"/>
+                <Image src={imagePreview} alt="Odabrana slika je: " width={200} height={200} className="imagePreview" priority={true}/>
                 <button onClick={handleCloseImage}>
                   <X className="absolute top-0 right-15 text-grey" />
                 </button>

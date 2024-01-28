@@ -31,7 +31,7 @@ const getBlogId =async (id:string) => {
     return data.post;
 }
 
-const preurediVijest = ({params}:{params: {id: string}}) => {
+const PreurediVijest = ({params}:{params: {id: string}}) => {
     const router = useRouter();
     const titleRef = useRef<HTMLInputElement | null>(null);
     const descriptionRef = useRef<HTMLInputElement | null>(null);
@@ -50,7 +50,7 @@ const preurediVijest = ({params}:{params: {id: string}}) => {
             console.log(err);
             toast.error("Članak ne postoji!", {id: "1"});
         });
-    },[])
+    },[params.id])
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -93,4 +93,4 @@ const preurediVijest = ({params}:{params: {id: string}}) => {
     )
 }
 
-export default preurediVijest;
+export default PreurediVijest;

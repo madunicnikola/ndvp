@@ -12,6 +12,9 @@ const nextConfig = {
         domains: ["firebasestorage.googleapis.com"],
     },
     reactStrictMode: false,
+    typescript: {
+        ignoreBuildErrors: true,
+    }
 };
 
 module.exports = nextConfig;

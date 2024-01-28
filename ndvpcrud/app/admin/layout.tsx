@@ -1,6 +1,6 @@
 import "./adminDashboard/globals.css";
 
-export const metadata = {
+const metadata = {
   title: 'NDVP',
   description: 'ndvp main site',
 }

@@ -1,34 +1,25 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { useState, useEffect } from "react";
 
-export default function Blog() {
-  const [posts, setPosts] = useState([]);
+async function pokupiVijesti(){
+  const res = await fetch("http://localhost:3000/api/vijesti", {
+    cache: "no-store",
+  });
+  const data = await res.json();
+  return data.posts;
+}
 
-  useEffect(() => {
-    const fetchData = async () => {
-        const response = await fetch("http://localhost:3000/api/vijesti");
-        const data = await response.json();
-        setPosts(data.posts || []);
-    };
-
-    fetchData();
-  }, []);
-
-  if (!posts) {
-    return <div>Loading...</div>;
-  }
-
+export default async function Blog() {
+  const posts = await pokupiVijesti();
   return (
         <div className="w-full h-full">
           <div className="md:w-2/4 sm:w-3/4 m-auto p-4 my-5 rounded-lg drop-shadow-xl">
             <h1 className="text-center text-5xl font-sans-montserrat uppercase text-secondaryColor"> Novosti </h1>
           </div>
           <div className="blog w-full flex justify-center items-center">
-            {posts && posts.map((post: any) => (
+            {posts.map((post: any) => (
               <div key={post.id} className="mainCard">
                 <div className="image">
                   {post.img && (

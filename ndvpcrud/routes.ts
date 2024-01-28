@@ -1,6 +1,6 @@
 export const publicRoutes = [
     "/",
-    "/vijesti",
+    "/vijesti/",
 ];
 
 export const authRoutes = [

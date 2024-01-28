@@ -1,6 +1,6 @@
 import './style.css';
 
-export const metadata = {
+const metadata = {
   title: 'NDVP',
   description: 'Blog',
 }
@@ -11,6 +11,6 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-      <div>{children}</div>
+    <div>{children}</div>
   )
 }

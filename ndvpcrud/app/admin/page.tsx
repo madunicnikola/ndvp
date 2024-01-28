@@ -1,20 +1,28 @@
-import { auth, signOut } from "@/auth"
-import { LogOut } from "lucide-react";
+"use client";
+import { useEffect } from 'react';
+import { auth, signOut } from '@/auth';
+import { LogOut } from 'lucide-react';
 
-const mainAdmin = async () => {
-  const session = await auth;  
-  
+const MainAdmin = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      const session = await auth;
+    };
+
+    fetchData();
+  }, []); 
   return (
     <div>
-      <form action={async () => {
-        await signOut();
-      }}>
+      <form
+        onSubmit={async (e) => {
+          await signOut();
+        }}>
         <button type="submit">
-          <LogOut/>
+          <LogOut />
         </button>
       </form>
     </div>
-  )
-}
-export default mainAdmin;
+  );
+};
 
+export default MainAdmin;

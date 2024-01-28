@@ -1,25 +1,24 @@
-"use client";
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { useState, useEffect } from 'react';
 
-export default function BlogPost(){
-  const [posts, setPosts] = useState([]);
+const postaviVijest = async (id: any) => {
+  const res = await fetch(`http://localhost:3000/api/vijesti/${id}`, {
+    cache: "no-store",
+  });
 
-  useEffect(() => {
-    const fetchData = async () => {
-        const response = await fetch("http://localhost:3000/api/vijesti");
-        const data = await response.json();
-        setPosts(data.posts || []);
-    };
-
-    fetchData();
-  }, []);
-
-  if (!posts) {
-    return <div>Loading...</div>;
+  if (!res.ok) {
+    console.error("Slabo ti to ide! ");
   }
+
+  return res.json();
+}
+
+const BlogPost = async({params}: {params: any}) => {
+  const {id} = params;
+
+  const post = await postaviVijest(id);
+
   return (
       <div>
       <div className="navbar flex justify-between items-center">
@@ -42,8 +41,7 @@ export default function BlogPost(){
           </li>
         </ul>
         </div>
-        {posts.map((post: any) => (
-        <div key={post.id}>
+          <div key={post.id}>
               <div className='mainHeader'>
                   <div className='headerContentSection'>
                       <div className="headerContent">
@@ -62,7 +60,7 @@ export default function BlogPost(){
                   </div>
               </div>
         </div>
-      ))}
-      </div>
+    </div>
   );
 }
+export default BlogPost;

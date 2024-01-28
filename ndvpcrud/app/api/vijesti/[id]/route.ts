@@ -2,22 +2,20 @@ import { NextResponse } from "next/server";
 import { main } from "../route";
 import prisma from "@/prisma";
 
-export const GET = async (req: Request, res: NextResponse) => {
+export const GET = async (req: any, {params}: {params: any}) => {
+    const {id} = params;
+
     try {
-       const id = req.url.split("/vijesti/")[1];
-       await main();
-       const post = await prisma.post.findFirst({ where: { id } });
-       if (!post){
-        return NextResponse.json({ message: "Not Found" }, { status: 404 });
-       } else {
-        return NextResponse.json({ message: "Success", post }, { status: 200 });
-       }
+        const post = await prisma.post.findUnique({
+            where: {id},
+        });
+        return NextResponse.json(post, {status: 200});
     } catch (err) {
-        return NextResponse.json({message: "Error", err}, {status: 500});
-    } finally {
-        await prisma.$disconnect();
+        console.log(err);
+        return NextResponse.json({message: "Ne radi ti dynamic Id!\n"}, {status: 500});
     }
 };
+
 export const PUT = async (req: Request, res: NextResponse) => {
     try {
         const id = req.url.split("/vijesti/")[1];

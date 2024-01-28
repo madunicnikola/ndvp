@@ -12,7 +12,7 @@ import { SuccessStyling } from "../components/successtyling";
 import { login } from "@/actions/login";
 import { useState, useTransition } from "react";
 
-export const mainLogin = () => {
+export const MainLogin = () => {
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
@@ -76,4 +76,4 @@ return (
 )
 }
 
-export default mainLogin;
+export default MainLogin;
