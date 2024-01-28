@@ -1,3 +1,4 @@
+import Head from "next/head";
 import "./adminDashboard/globals.css";
 
 const metadata = {
@@ -12,6 +13,9 @@ export default function RootLayout({
   }) {
     return (
       <html lang="en">
+      <Head>
+        <title>{metadata.title}</title>
+      </Head>
         <body>{children}</body>
       </html>
     )
